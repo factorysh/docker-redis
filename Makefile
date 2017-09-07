@@ -1,13 +1,11 @@
-all: jessie stretch latest 
+all: jessie stretch
 
 jessie:
-	docker build -t bearstech/redis:$@ -f Dockerfile.$@ .
+	docker build -t bearstech/redis:2.8 -f Dockerfile.$@ .
 
 stretch:
-	docker build -t bearstech/redis:$@ -f Dockerfile.$@ .
-
-latest: stretch
-	docker tag bearstech/redis:$< bearstech/redis:$@
+	docker build -t bearstech/redis:3.2 -f Dockerfile.$@ .
+	docker tag bearstech/redis:3.2 bearstech/redis:latest
 
 pull:
 	docker pull bearstech/debian:stretch
