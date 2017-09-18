@@ -12,6 +12,6 @@ pull:
 	docker pull bearstech/debian:jessie
 
 push:
-	docker push bearstech/redis:jessie
-	docker push bearstech/redis:stretch
+	docker push bearstech/redis:2.8
+	docker push bearstech/redis:3.2
 	docker push bearstech/redis:latest
