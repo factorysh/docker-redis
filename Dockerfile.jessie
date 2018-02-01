@@ -14,8 +14,6 @@ RUN apt-get update && \
 # data dir
 RUN chown -R redis:redis /var/lib/redis
 
-# data stuff
-VOLUME /var/lib/redis
 WORKDIR /var/lib/redis
 
 COPY files/redis.conf.jessie /etc/redis/redis.conf
