@@ -1,0 +1,18 @@
+---
+
+version: '3'
+
+services:
+
+    server:
+        image: bearstech/redis
+
+    client:
+        image: bearstech/redis
+        volumes:
+            - ./bin/goss:/usr/local/bin/goss
+            - ./redis.yaml:/tests/redis.yaml
+        working_dir: /tests
+        links:
+            - server
+        command: goss -g redis.yaml validate
