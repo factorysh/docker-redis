@@ -5,13 +5,13 @@ version: '3'
 services:
 
     server:
-        image: bearstech/redis
+        image: bearstech/redis:${REDIS_VERSION}
 
     client:
-        image: bearstech/redis
+        image: bearstech/redis:${REDIS_VERSION}
         volumes:
             - ./bin/goss:/usr/local/bin/goss
-            - ./redis.yaml:/tests/redis.yaml
+            - ./compose/redis.yaml:/tests/redis.yaml
         working_dir: /tests
         links:
             - server
