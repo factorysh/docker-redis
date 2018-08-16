@@ -26,6 +26,11 @@ push:
 	docker push bearstech/redis:3.2
 	docker push bearstech/redis:latest
 
+remove_image:
+	docker rmi bearstech/redis:2.8
+	docker rmi bearstech/redis:3.2
+	docker rmi bearstech/redis:latest
+
 tests/bin/goss:
 	mkdir -p tests/bin
 	curl -o tests/bin/goss -L https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64
