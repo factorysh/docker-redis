@@ -1,7 +1,0 @@
----
-
-command:
-    redis-cli -h server PING:
-        exit-status: 0
-        stdout:
-            - PONG

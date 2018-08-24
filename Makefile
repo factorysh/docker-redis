@@ -31,16 +31,16 @@ remove_image:
 	docker rmi bearstech/redis:3.2
 	docker rmi bearstech/redis:latest
 
-tests/bin/goss:
-	mkdir -p tests/bin
-	curl -o tests/bin/goss -L https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64
-	chmod +x tests/bin/goss
+tests_redis/bin/goss:
+	mkdir -p tests_redis/bin
+	curl -o tests_redis/bin/goss -L https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64
+	chmod +x tests_redis/bin/goss
 
 
-test2.8: tests/bin/goss
-	make -C tests do_docker_compose REDIS_VERSION=2.8
+test2.8: tests_redis/bin/goss
+	make -C tests_redis do_docker_compose REDIS_VERSION=2.8
 
-test3.2: tests/bin/goss
-	make -C tests do_docker_compose REDIS_VERSION=3.2
+test3.2: tests_redis/bin/goss
+	make -C tests_redis do_docker_compose REDIS_VERSION=3.2
 
 tests: test2.8 test3.2
