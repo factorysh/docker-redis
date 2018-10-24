@@ -43,4 +43,8 @@ test2.8: tests_redis/bin/goss
 test3.2: tests_redis/bin/goss
 	make -C tests_redis do_docker_compose REDIS_VERSION=3.2
 
+down:
+	make -C tests_redis down REDIS_VERSION=2.8
+	make -C tests_redis down REDIS_VERSION=3.2
+
 tests: test2.8 test3.2
