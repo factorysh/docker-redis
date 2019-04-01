@@ -58,7 +58,7 @@
 # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES
 # JUST COMMENT THE FOLLOWING LINE.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-bind 0.0.0.0 
+bind 0.0.0.0
 
 # Protected mode is a layer of security protection, in order to avoid that
 # Redis instances left open on the internet are accessed and exploited.
@@ -535,6 +535,7 @@ slave-priority 100
 # output buffers (but this is not needed if the policy is 'noeviction').
 #
 # maxmemory <bytes>
+maxmemory ${MAXMEMORY}
 
 # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
 # is reached. You can select among five behaviors:
@@ -558,6 +559,7 @@ slave-priority 100
 # The default is:
 #
 # maxmemory-policy noeviction
+maxmemory-policy ${MAXMEMORY_EVICTION}
 
 # LRU and minimal TTL algorithms are not precise algorithms but approximated
 # algorithms (in order to save memory), so you can tune it for speed or
