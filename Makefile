@@ -4,30 +4,21 @@ all: pull build
 
 pull:
 	docker pull bearstech/debian:stretch
-	docker pull bearstech/debian:jessie
 
-build: jessie stretch
-
-jessie:
-	docker build \
-			-t bearstech/redis:2.8 \
-			--build-arg DEBIAN_DISTRO=jessie \
-			.
+build: stretch
 
 stretch:
 	docker build \
 			-t bearstech/redis:3.2 \
-			--build-arg DEBIAN_DISTRO=stretch \
 			.
 	docker tag bearstech/redis:3.2 bearstech/redis:latest
+	docker tag bearstech/redis:3.2 bearstech/redis:stretch
 
 push:
-	docker push bearstech/redis:2.8
 	docker push bearstech/redis:3.2
 	docker push bearstech/redis:latest
 
 remove_image:
-	docker rmi bearstech/redis:2.8
 	docker rmi bearstech/redis:3.2
 	docker rmi bearstech/redis:latest
 
@@ -36,15 +27,10 @@ tests_redis/bin/goss:
 	curl -o tests_redis/bin/goss -L https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64
 	chmod +x tests_redis/bin/goss
 
-
-test2.8: tests_redis/bin/goss
-	make -C tests_redis do_docker_compose REDIS_VERSION=2.8
-
 test3.2: tests_redis/bin/goss
-	make -C tests_redis do_docker_compose REDIS_VERSION=3.2
+	make -C tests_redis do_docker_compose
 
 down:
-	make -C tests_redis down REDIS_VERSION=2.8
-	make -C tests_redis down REDIS_VERSION=3.2
+	make -C tests_redis down
 
-tests: test2.8 test3.2
+tests: test3.2

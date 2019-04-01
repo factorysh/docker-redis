@@ -1,5 +1,4 @@
-ARG DEBIAN_DISTRO
-FROM bearstech/debian:${DEBIAN_DISTRO}
+FROM bearstech/debian:stretch
 
 ARG DEBIAN_DISTRO
 
@@ -11,7 +10,7 @@ RUN set -eux \
     &&  rm -rf /var/lib/apt/lists/* \
     &&  chown -R redis:redis /var/lib/redis
 
-COPY files/redis.conf.${DEBIAN_DISTRO} /etc/redis/redis.conf
+COPY files/redis.conf /etc/redis/redis.conf
 
 EXPOSE 6379
 
