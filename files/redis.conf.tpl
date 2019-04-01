@@ -535,6 +535,7 @@ slave-priority 100
 # output buffers (but this is not needed if the policy is 'noeviction').
 #
 # maxmemory <bytes>
+maxmemory ${MAXMEMORY}
 
 # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
 # is reached. You can select among five behaviors:
