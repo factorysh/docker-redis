@@ -559,6 +559,7 @@ maxmemory ${MAXMEMORY}
 # The default is:
 #
 # maxmemory-policy noeviction
+maxmemory-policy ${MAXMEMORY_EVICTION}
 
 # LRU and minimal TTL algorithms are not precise algorithms but approximated
 # algorithms (in order to save memory), so you can tune it for speed or

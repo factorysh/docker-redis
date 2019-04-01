@@ -20,6 +20,7 @@ WORKDIR /var/lib/redis
 VOLUME /var/lib/redis
 USER redis
 ENV MAXMEMORY=512mb
+ENV MAXMEMORY_EVICTION=noeviction
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["redis-server", "/etc/redis/redis.conf"]
