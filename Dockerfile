@@ -21,6 +21,8 @@ VOLUME /var/lib/redis
 USER redis
 ENV MAXMEMORY=512mb
 ENV MAXMEMORY_EVICTION=noeviction
+ARG GIT_VERSION
+LABEL com.bearstech.source.redis=https://github.com/factorysh/docker-redis/commit/${GIT_VERSION}
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["redis-server", "/etc/redis/redis.conf"]
