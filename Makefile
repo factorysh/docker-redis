@@ -1,4 +1,5 @@
 GOSS_VERSION := 0.3.5
+GIT_VERSION := $(shell git rev-parse HEAD)
 
 all: pull build
 
@@ -9,6 +10,7 @@ build: stretch
 
 stretch:
 	docker build \
+			--build-arg GIT_VERSION=${GIT_VERSION} \
 			-t bearstech/redis:3.2 \
 			.
 	docker tag bearstech/redis:3.2 bearstech/redis:latest
