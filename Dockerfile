@@ -21,11 +21,23 @@ VOLUME /var/lib/redis
 USER redis
 ENV MAXMEMORY=512mb
 ENV MAXMEMORY_EVICTION=noeviction
-ARG GIT_VERSION
-LABEL com.bearstech.source.redis=https://github.com/factorysh/docker-redis/commit/${GIT_VERSION}
 
-ARG GIT_DATE
-LABEL com.bearstech.date.redis=${GIT_DATE}
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["redis-server", "/etc/redis/redis.conf"]
+
+# generated labels
+
+ARG GIT_VERSION
+ARG GIT_DATE
+ARG BUILD_DATE
+
+LABEL com.bearstech.image.revision_date=${GIT_DATE}
+
+LABEL org.opencontainers.image.authors=Bearstech
+
+LABEL org.opencontainers.image.revision=${GIT_VERSION}
+LABEL org.opencontainers.image.created=${BUILD_DATE}
+
+LABEL org.opencontainers.image.url=https://github.com/factorysh/docker-redis
+LABEL org.opencontainers.image.source=https://github.com/factorysh/docker-redis/blob/${GIT_VERSION}/Dockerfile
