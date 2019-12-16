@@ -17,7 +17,6 @@ COPY files/redis.conf.tpl /etc/redis/redis.conf.tpl
 EXPOSE 6379
 
 WORKDIR /var/lib/redis
-VOLUME /var/lib/redis
 USER redis
 ENV MAXMEMORY=512mb
 ENV MAXMEMORY_EVICTION=noeviction
