@@ -5,10 +5,10 @@ version: '3'
 services:
 
     server:
-        image: bearstech/redis:stretch
+        image: bearstech/redis:${DEBIAN_VERSION}
 
     client:
-        image: bearstech/redis:stretch
+        image: bearstech/redis:${DEBIAN_VERSION}
         volumes:
             - ./bin/goss:/usr/local/bin/goss
             - ./compose/redis.yaml:/tests/redis.yaml

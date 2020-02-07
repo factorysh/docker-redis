@@ -1,4 +1,8 @@
-FROM bearstech/debian:stretch
+ARG DEBIAN_VERSION
+
+FROM bearstech/debian:${DEBIAN_VERSION}
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN set -eux \
     &&  export http_proxy=${HTTP_PROXY} \
