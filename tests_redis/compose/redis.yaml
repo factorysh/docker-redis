@@ -1,6 +1,10 @@
 ---
 
 command:
+    redis-server --version:
+        exit-status: 0
+        stdout:
+            - "/Redis server v={{.Env.REDIS_VERSION}}/"
     redis-cli -h server PING:
         exit-status: 0
         stdout:

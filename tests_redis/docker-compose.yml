@@ -15,4 +15,6 @@ services:
         working_dir: /tests
         links:
             - server
+        environment:
+            REDIS_VERSION: ${REDIS_VERSION}
         command: goss -g redis.yaml validate
